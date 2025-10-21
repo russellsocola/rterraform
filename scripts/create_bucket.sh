@@ -1,0 +1,1 @@
+aws s3api create-bucket --bucket rsocola-vcc-eks-terraform-state --region us-east-1 --profile rsocola

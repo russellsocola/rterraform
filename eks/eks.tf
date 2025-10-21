@@ -2,8 +2,7 @@ module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 19.0"
 
-  #cluster_name = "vcc-eks-terraform-state"
-  cluster_name    = "dev-miatech-aeromexico-factura"
+  cluster_name = "rsocola-vcc-eks-terraform-state"
   cluster_version = "1.27"
 
   cluster_endpoint_private_access = true

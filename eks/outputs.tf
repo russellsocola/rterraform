@@ -7,6 +7,5 @@ output "cluster_id" {
 }
 
 output "kubconfig_command" {
-  #   value = "rm $HOME/.kube/config ; aws eks update-kubeconfig --name vcc-eks-tf"
-  value = "rm $HOME/.kube/config ; aws eks update-kubeconfig --name dev-miatech-am-factura"
+  value = "rm $HOME/.kube/config ; aws eks update-kubeconfig --name rsocola-vcc-eks-terraform-state"
 }

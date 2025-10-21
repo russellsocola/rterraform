@@ -1,7 +1,6 @@
 terraform {
   backend "s3" {
-    #bucket = "vcc-eks-terraform-state"
-    bucket = "dev-miatech-aeromexico-factura"
+    bucket = "rsocola-vcc-eks-terraform-state"
     key    = "eks/terraform.tfstate"
     region = "us-east-1"
   }
