@@ -2,7 +2,7 @@ resource "aws_iam_policy" "load_balancer_controller" {
   name        = "AmazonEKSLoadBalancerControllerPolicyTF"
   path        = "/"
   description = "Policy for load balancer controller on EKS"
-  policy      = file("iam_policy.json")
+  policy      = file("${path.module}/iam_policy.json")
 }
 
 resource "aws_iam_role" "load_balancer_controller" {
@@ -22,11 +22,16 @@ resource "aws_iam_role" "load_balancer_controller" {
       }
       "Condition" = {
         "StringEquals" = {
-          "${module.eks.oidc_provider}:sub" : "system:serviceaccount:kube-system:aws-load-balancer-controller"
+          "${module.eks.oidc_provider}:aud" = "sts.amazonaws.com"
+          "${module.eks.oidc_provider}:sub" = "system:serviceaccount:kube-system:aws-load-balancer-controller"
         }
       }
     }]
   })
+   tags = {
+    Environment = "staging"
+    Terraform   = "true"
+  }
 }
 
 resource "aws_iam_policy_attachment" "load_balancer_controller" {

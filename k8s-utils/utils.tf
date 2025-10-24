@@ -22,6 +22,14 @@ resource "helm_release" "load_balancer_ingress_controller" {
   }
 
   set {
+    name  = "region"
+    value = "us-east-1"
+  }
+  set {
+    name  = "vpcId"
+    value = data.terraform_remote_state.vpc.outputs.vpc_id
+  }
+  set {
     name  = "serviceAccount.create"
     value = "false"
   }
